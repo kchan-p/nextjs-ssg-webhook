@@ -1,5 +1,5 @@
 {
-  "name": "nextjs-ssg-isr-webhook",
+  "name": "nextjs-ssg-webhook",
   "version": "0.1.0",
   "private": true,
   "scripts": {
