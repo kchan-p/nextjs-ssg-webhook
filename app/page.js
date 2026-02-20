@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getSiteData } from "@/lib/data";
+import { getSiteData,getPostData } from "@/lib/data";
 export const revalidate = false;
 export const dynamic = "force-static";
 
@@ -13,8 +13,13 @@ export async function generateMetadata() {
   };
 }
 export default async function Page() {
+  const post = await getPostData("top");
+
+  if( !post ) notFound();
+
   return (<>
-    <h1>Top Page</h1>
+    <h1>{post.title}</h1>
     <Link href="/posts/">記事一覧</Link>
+    <p>{post.content}</p>
   </>);
 }

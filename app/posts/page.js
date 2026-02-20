@@ -15,7 +15,7 @@ export default async function PostsPage() {
     <main>
       <h1>Posts</h1>
       <p>&nbsp;</p>
-      <p>生成日：{new Date().toLocaleString()}</p>
+      <p>生成日：{new Date().toLocaleString("jp")}</p>
       <p>&nbsp;</p>
       <p>コンテンツ一覧</p>
       <ul>
@@ -23,7 +23,7 @@ export default async function PostsPage() {
         <li key={post.slug}>
           <a href={`/posts/${post.slug}`}>
             {post.title}
-          </a>
+          </a>:{post.content.slice(0, 120) + "..."}
         </li>
       ))}
       </ul>

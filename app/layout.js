@@ -1,17 +1,9 @@
 import Link from "next/link";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Potta_One } from "next/font/google";
 import { getSiteData } from "@/lib/data";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const pottaOne = Potta_One({ weight: "400" });
 
 
 // メタデータの生成
@@ -30,9 +22,9 @@ export default async function RootLayout({ children }) {
 
   return (
     <html lang="ja">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={`${pottaOne.className}`}>
         <header>--{siteData.siteTitle}--</header>
-        <Link href="/">
+        <Link href="/" className="navi">
           ホームへ戻る
         </Link>
         {children}
