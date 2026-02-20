@@ -41,7 +41,7 @@ export default async function Page({ params }) {
       <h1>{post.title}</h1>
       <p>&nbsp;</p>
       <p>{post.content}</p>
-      <p>生成日：{new Date().toLocaleString("jp")}</p>
+      <p>生成日：{new Date().toLocaleString("ja-JP")}</p>
       <p>&nbsp;</p>
       <p><a href={`/api/revalidate?slug=${post.slug}&secret=xxxx`} target="_blank">[再生成]</a></p>
       <p>※再生成クリック後ブラウザ再読み込み</p>

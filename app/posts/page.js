@@ -15,7 +15,7 @@ export default async function PostsPage() {
     <main>
       <h1>Posts</h1>
       <p>&nbsp;</p>
-      <p>生成日：{new Date().toLocaleString("jp")}</p>
+      <p>生成日：{new Date().toLocaleString("ja-JP")}</p>
       <p>&nbsp;</p>
       <p>コンテンツ一覧</p>
       <ul>
