@@ -27,7 +27,7 @@ export async function GET(req) {
   }
 
   const slug = searchParams.get("slug");
-  if (slug) {
+  if (!slug) {
     return Response.json({ message: "Invalid slug" }, { status: 401 });
   }
   revalidateTag(`posts-${slug}`, "max");
