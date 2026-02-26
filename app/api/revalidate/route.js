@@ -6,6 +6,16 @@ let lastRequestTime = 0;
 
 export async function GET(req) {
   
+  // 5秒に一回のみ受け付け
+  const now = ate.now();
+  if (now - lastRequestTime < 5000) {
+    return Response.json(
+      { message: "Too Many Requests" },
+      { status: 429 }
+    );
+  }
+  lastRequestTime =now;
+
   const headerList = await headers();
   if( headerList.get("origin") === process.env.SITE_URL ){
     return Response.json({ message: "Invalid origin" }, { status: 401 });
@@ -18,13 +28,7 @@ export async function GET(req) {
     return Response.json({ message: "Invalid secret" }, { status: 401 });
   }
 
-    // 5秒に一回のみ受け付け
-  if (Date.now() - lastRequestTime < 5000) {
-    return Response.json(
-      { message: "Too Many Requests" },
-      { status: 429 }
-    );
-  }
+
 
   const slug = searchParams.get("slug");
   if (!slug) {
