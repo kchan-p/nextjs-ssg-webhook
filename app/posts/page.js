@@ -1,6 +1,5 @@
-import { getPostsData } from "@/lib/data";
+import { getContentsData } from "@/lib/data";
 
-export const revalidate = false;
 export const dynamic = "force-static";
 
 export const metadata = {
@@ -8,8 +7,8 @@ export const metadata = {
   description: "コンテンツ一覧です"
 };
 
-export default async function PostsPage() {
-  const posts = await getPostsData();
+export default async function Page() {
+  const posts = await getContentsData();
 
   return (
     <main>
@@ -19,13 +18,15 @@ export default async function PostsPage() {
       <p>&nbsp;</p>
       <p>コンテンツ一覧</p>
       <ul>
-      {posts.map(post => (
-        <li key={post.slug}>
-          <a href={`/posts/${post.slug}`}>
-            {post.title}
-          </a>:{post.content.slice(0, 120) + "..."}
-        </li>
-      ))}
+        {posts.map(post => (
+            <li key={post.slug}>
+              <a href={`/posts/${post.slug}`}>
+                {post.title}
+              </a>:{post.content.slice(0, 120) + "..."}
+              <p>{post.date}</p>
+              <p>{post.mdate}</p>
+            </li>
+          ))}
       </ul>
     </main>
   );

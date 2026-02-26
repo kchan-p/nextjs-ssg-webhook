@@ -11,6 +11,15 @@ header{
 .navi::before{
   content: "▶";
 }
+.wrap{
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
+  padding: 1em;
+}
+.content{
+  flex: 1;
+}
 h1{
   border-top:2px solid black;
   border-bottom:2px solid black ;

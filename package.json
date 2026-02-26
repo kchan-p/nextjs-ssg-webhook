@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "cross-env SITE_URL=http://localhost:3000 DATA_URL=http://localhost:3001 DATA_KEY=xxxxx SECRET_KEY=abcdef next",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "build:local": "cross-env SITE_URL=http://localhost:3000 DATA_URL=http://localhost:3001 DATA_KEY=xxxxx SECRET_KEY=abcdef next build",
+    "start:local": "cross-env SITE_URL=http://localhost:3000 DATA_URL=http://localhost:3001 DATA_KEY=xxxxx SECRET_KEY=abcdef next start"
   },
   "dependencies": {
     "next": "16.1.6",
@@ -14,6 +16,7 @@
     "react-dom": "19.2.3"
   },
   "devDependencies": {
+    "cross-env": "^10.1.0",
     "eslint": "^9",
     "eslint-config-next": "16.1.6"
   }

@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { getSiteData,getPostData } from "@/lib/data";
-export const revalidate = false;
+import { getSiteData,getTopData } from "@/lib/data";
+
 export const dynamic = "force-static";
 
 // メタデータの生成
@@ -13,7 +13,7 @@ export async function generateMetadata() {
   };
 }
 export default async function Page() {
-  const post = await getPostData("top");
+  const post = await getTopData();
 
   if( !post ) notFound();
 
