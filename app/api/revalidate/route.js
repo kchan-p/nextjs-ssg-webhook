@@ -7,7 +7,7 @@ let lastRequestTime = 0;
 export async function GET(req) {
   
   // 5秒に一回のみ受け付け
-  const now = ate.now();
+  const now = Date.now();
   if (now - lastRequestTime < 5000) {
     return Response.json(
       { message: "Too Many Requests" },
