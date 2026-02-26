@@ -3,8 +3,9 @@ export async function Sidebar(){
     const latest = await getLatestData();
     return (<div>
         <p>新着一覧</p>
+        <p>fetch日時:{new Date(latest.fetchDate).toLocaleString("ja-JP")}</p>
         <ul>
-        {latest.map(l => (
+        {latest.data.map(l => (
             <li key={l.slug}>
               <a href={`/posts/${l.slug}`}>
                 {l.title}

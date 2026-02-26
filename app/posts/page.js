@@ -15,9 +15,10 @@ export default async function Page() {
       <h1>コンテンツ一覧</h1>
       <p>&nbsp;</p>
       <p>ページ生成日時：{new Date().toLocaleString("ja-JP")}</p>
+      <p>fetch日時:{new Date(posts.fetchDate).toLocaleString("ja-JP")}</p>
       <p>&nbsp;</p>
       <ul>
-        {posts.map(post => (
+        {posts.data.map(post => (
             <li key={post.slug}>
               <a href={`/posts/${post.slug}`}>
                 {post.title}
