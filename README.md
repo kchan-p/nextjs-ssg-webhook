@@ -5,7 +5,9 @@ https://note.affi-sapo-sv.com/nextjs-ssg-webhook.php<br>
 <br>
 フロント側でのスクリプトなし<br>
 更新はwebhookのみ<br>
-
+<br>
+動作確認およびビルドには次のデータ配信用サーバーの起動が必要です。
+nextjs-ssg-webhook-data(https://github.com/kchan-p/nextjs-ssg-webhook-data)
 
 ---
 
@@ -17,16 +19,18 @@ https://note.affi-sapo-sv.com/nextjs-ssg-webhook.php<br>
 
 ## 開発方法
 
-npm install<br>
-npm run dev<br>
+1.npm install<br>
+2.nextjs-ssg-webhook-dataの起動<br>
+3.npm run dev<br>
 
-## ビルド
+## ビルド/実行
 
-npm run build<br>
+ローカルビルド/実行：<br>
+<br>
+1.nextjs-ssg-webhook-dataの起動<br>
+2.npm run build:local<br>
+3.npm run start:local
 
-## 実行
-
-npm run start
 
 ## 作者
 
