@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getSiteData,getTopData } from "@/lib/data";
+import {purify,stripHtmlTags} from "@/lib/purify";
 
 export const dynamic = "force-static";
 
@@ -9,8 +10,8 @@ export async function generateMetadata() {
   const {siteTitle,siteDescription} = siteData.data;
 
   return {
-    title: siteTitle,
-    description: siteDescription
+    title: stripHtmlTags(siteTitle),
+    description: stripHtmlTags(siteDescription)
   };
 }
 export default async function Page() {
@@ -20,9 +21,9 @@ export default async function Page() {
   const {title,content} = post.data;
 
   return (<>
-    <h1>{title}</h1>
+    <h1>{stripHtmlTags(title)}</h1>
     <p>fetch日時:{new Date(post.fetchDate).toLocaleString("ja-JP")}</p>
     <Link href="/posts/">記事一覧</Link>
-    <p>{content}</p>
+    <div dangerouslySetInnerHTML={{ __html: purify(content) }} />
   </>);
 }

@@ -1,5 +1,6 @@
 import { getContentData,getContentsData } from "@/lib/data";
 import { notFound } from "next/navigation";
+import {purify,stripHtmlTags} from "@/lib/purify";
 
 export const dynamic = "force-static";
 
@@ -7,7 +8,6 @@ const getData = async (params)=>{
   const {slug} = await params;
 
   const post = await getContentData(slug);
-
   if( !post ) notFound();
 
   return post;
@@ -24,7 +24,8 @@ export async function generateStaticParams() {
   // メタデータの生成
 export async function generateMetadata({ params }) {
   const post = await getData(params);
-  const {title,content} = post.data;
+  const title = stripHtmlTags(post.data.title);
+  const content = purify(post.data.content);
 
   return {
     title: title,
@@ -37,13 +38,15 @@ export async function generateMetadata({ params }) {
 }
 export default async function Page({ params }) {
   const post = await getData(params);
-  const {title,content,slug} = post.data;
+  const title = stripHtmlTags(post.data.title);
+  const content = purify(post.data.content);
+  const slug = post.data.slug;
 
   return (
     <main>
       <h1>{title}</h1>
       <p>&nbsp;</p>
-      <p>{content}</p>
+      <div dangerouslySetInnerHTML={{ __html: content }} />
       <p>ページ生成日時：{new Date().toLocaleString("ja-JP")}</p>
       <p>fetch日時:{new Date(post.fetchDate).toLocaleString("ja-JP")}</p>
       <p>&nbsp;</p>

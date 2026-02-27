@@ -11,6 +11,7 @@
     "start:local": "cross-env SITE_URL=http://localhost:3000 DATA_URL=http://localhost:3001 DATA_KEY=xxxxx SECRET_KEY=abcdef next start"
   },
   "dependencies": {
+    "isomorphic-dompurify": "^3.0.0",
     "next": "16.1.6",
     "react": "19.2.3",
     "react-dom": "19.2.3"

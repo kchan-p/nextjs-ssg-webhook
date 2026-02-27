@@ -2,16 +2,15 @@ import Link from "next/link";
 import { Potta_One } from "next/font/google";
 import { getSiteData } from "@/lib/data";
 import { Sidebar } from "@/sidebar/sidebar";
+import {stripHtmlTags} from "@/lib/purify";
 import "./globals.css";
-
-
 
 const pottaOne = Potta_One({ weight: "400" });
 
 // メタデータの生成
 export async function generateMetadata() {
   const siteData = await getSiteData();
-  const {siteTitle} = siteData.data;
+  const siteTitle = stripHtmlTags(siteData.data.siteTitle);
 
   return {
     title: {
@@ -22,7 +21,7 @@ export async function generateMetadata() {
 }
 export default async function RootLayout({ children }) {
   const siteData = await getSiteData();
-  const {siteTitle} = siteData.data;
+  const siteTitle = stripHtmlTags(siteData.data.siteTitle);
 
   return (
     <html lang="ja">

@@ -1,4 +1,5 @@
 import { getContentsData } from "@/lib/data";
+import {purify,stripHtmlTags} from "@/lib/purify";
 
 export const dynamic = "force-static";
 
@@ -21,8 +22,8 @@ export default async function Page() {
         {posts.data.map(post => (
             <li key={post.slug}>
               <a href={`/posts/${post.slug}`}>
-                {post.title}
-              </a>:{post.content.slice(0, 120) + "..."}
+                {stripHtmlTags(post.title)}
+              </a>:{stripHtmlTags(post.content).slice(0, 120) + "..."}
             </li>
           ))}
       </ul>
