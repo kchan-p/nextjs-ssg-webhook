@@ -1,4 +1,5 @@
 import { getLatestData } from "@/lib/data";
+import Link from "next/link";
 import {stripHtmlTags} from "@/lib/purify";
 
 export async function Sidebar(){
@@ -9,9 +10,9 @@ export async function Sidebar(){
         <ul>
         {latest.data.map(l => (
             <li key={l.slug}>
-              <a href={`/posts/${l.slug}`}>
+              <Link href={`/posts/${l.slug}`}>
                 {stripHtmlTags(l.title)}
-              </a>:({(new Date( l.date )).toLocaleDateString("ja-JP")})
+              </Link>:({(new Date( l.date )).toLocaleDateString("ja-JP")})
             </li>
           ))}
       </ul>
